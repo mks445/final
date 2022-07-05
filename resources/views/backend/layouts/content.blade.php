@@ -6,7 +6,7 @@
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="me-md-3 me-xl-5">
                             <h2>Welcome back,</h2>
-                            <p class="mb-md-0">Your analytics dashboard template.</p>
+                            <p class="mb-md-0">Dashboard template.</p>
                         </div>
                         <div class="d-flex">
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
