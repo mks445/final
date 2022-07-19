@@ -20,7 +20,8 @@
                                     <th scope="col">Surname</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Role</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -35,14 +36,16 @@
 
                                         <td>
                                             <a href="{{route('users.edit', $user->id)}}">
-                                                <button type="button" class="btn btn-primary" class="float-left">Edit
-                                                </button>
-                                                <form action="{{route('users.destroy', $user)}}" method="POST"
-                                                      class="float-left">
-                                                    @csrf
-                                                    {{method_field('DELETE')}}
-                                                    <button type="submit" class="btn btn-warning">Delete</button>
-                                                </form>
+                                                <button type="button" class="btn btn-primary" class="float-left">Edit</button>
+                                        </td>
+
+                                        <td>
+                                            <form action="{{route('users.destroy', $user)}}" method="POST"
+                                                  class="float-left">
+                                                @csrf
+                                                {{method_field('DELETE')}}
+                                                <button type="submit" class="btn btn-warning">Delete</button>
+                                            </form>
                                         </td>
 
                                     </tr>

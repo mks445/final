@@ -36,6 +36,10 @@ if(Gate::denies('edit-users')){
     public function update(Request $request, User $user)
     {
         $user->roles()->sync($request->roles);
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->save();
         return redirect() -> route('users.index');
     }
 
