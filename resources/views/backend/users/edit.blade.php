@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('backend.layouts.master')
 
 @section('content')
 
@@ -33,9 +33,9 @@
     </div>
 @endsection
 
-<script>
-    import Buttons from "../../../../public/admin/template/pages/ui-features/buttons.html";
-    export default {
-        components: {Buttons}
-    }
-</script>
+{{--<script>--}}
+{{--    import Buttons from "../../../../public/admin/template/pages/ui-features/buttons.html";--}}
+{{--    export default {--}}
+{{--        components: {Buttons}--}}
+{{--    }--}}
+{{--</script>--}}

@@ -1,75 +1,65 @@
 @extends('backend.layouts.master')
 @section('content')
-    <div class="main-panel">
-        <div class="content-wrapper">
-            <h4>Manage Category</h4>
-            <div class="row justify-content-center">
 
-
-                <div class="col-lg-12 grid-margin stretch-card">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mt-5">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-header">Manage category</div>
 
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                                    @forelse($categories as $category)
+                            @forelse($categories as $category)
 
-                                        <td><img src="{{Storage::url($category->image)}}" alt=""></td>
-                                        <td>{{$category->name}}</td>
+                                <td><img src="{{Storage::url($category->image)}}" alt=""></td>
+                                <td>{{$category->name}}</td>
 
-                                        <td>
-                                            <a href="{{route('category.edit', [$category->id])}}">
-                                                <button
-                                                    class="btn btn-info">
-                                                    <i class="mdi mdi-table-edit"></i>
-                                                </button>
-                                            </a>
-                                        </td>
+                                <td>
+                                    <a href="{{route('category.edit', [$category->id])}}">
+                                        <button type="button" class="btn btn-primary" class="float-left">Edit
+                                        </button>
+                                    </a>
+                                </td>
 
 
-                                        <td>
-                                            <form action="{{route('category.destroy', $category->id)}}"
-                                                  method="post">@csrf
-                                                @method('DELETE')
+                                <td>
+                                    <form action="{{route('category.destroy', $category->id)}}"
+                                          method="post">@csrf
+                                        @method('DELETE')
 
-                                                <button type="type" class="btn btn-danger">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        <button type="submit" class="btn btn-warning">Delete</button>
+                                    </form>
+                                </td>
 
 
-                                        </tr>
+                                </tr>
 
-                                    @empty
-                                        <td>No categories</td>
-                                    @endforelse
+                            @empty
+                                <td>No categories</td>
+                            @endforelse
 
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            @endsection
+        </div>
+    </div>
+@endsection
 
-            <script>
-                import Buttons from "../../../../public/admin/template/pages/ui-features/buttons.html";
 
-                export default {
-                    components: {Buttons}
-                }
-            </script>
+
+
+

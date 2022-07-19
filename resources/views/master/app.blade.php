@@ -14,18 +14,17 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Mr Handyman</title>
-    <!-- Favicon-->
+
     <link rel="icon" type="image/x-icon" href="{{asset('home_page/assets/favicon.ico')}}"/>
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('home_page/css/styles.css')}}" rel="stylesheet"/>
 </head>
 <body>
-<!-- Responsive navbar-->
+
 <nav class="navbar navbar-expand-lg navbar-light " >
     <div class="container">
         <a class="navbar-brand" href="{{route('welcome')}}">
-            <img src="/MasterFive/public/home_page/assets/logo.png" alt="logo" style="width:40px;"
-                 class="rounded-pill">
+            <img src="/admin/template/images/logo.png" alt="logo"
+                 class="logo-image">
         </a>
 
 
@@ -101,16 +100,14 @@
 
 @yield('content')
 
-<!-- Footer-->
+
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Mr Handyman 2022</p></div>
 </footer>
-<!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<!-- Core theme JS-->
 <script src="{{asset('home_page/js/scripts.js')}}"></script>
 </body>
 </html>

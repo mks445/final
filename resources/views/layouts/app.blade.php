@@ -26,7 +26,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar bg-dark">
     <div class="container">
         <a class="navbar-brand" href="{{route('welcome')}}">
-            <img src="/MasterFive/public/home_page/assets/logo.jpg" alt="logo"
+            <img src="/admin/template/images/logo.png" alt="logo"
                  class="logo-image">
         </a>
 
