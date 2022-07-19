@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CategoryFormRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -42,8 +43,7 @@ class CategoryController extends Controller
 
     public function show()
     {
-dd("some text");
-
+      //
     }
 
     public function edit($id)
@@ -74,7 +74,8 @@ dd("some text");
             $category->delete();
         }
 
-        return back()->with('message', 'Category deleted successfully');
+//        return back()->with('message', 'Category deleted successfully');
+        return  back();
     }
 
 

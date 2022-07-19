@@ -38,49 +38,15 @@
                                         </td>
 
 
-
-
                                         <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#exampleModal{{ $category->id }}">
-                                                <i class="mdi mdi-delete"></i>
-                                            </button>
+                                            <form action="{{route('category.destroy', $category->id)}}"
+                                                  method="post">@csrf
+                                                @method('DELETE')
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal{{ $category->id }}" tabindex="-1"
-                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <form action="{{ route('category.destroy', $category->id) }}"
-                                                          method="post">@csrf
-                                                        @method('DELETE')
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Delete
-                                                                    confirmation</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p> Are you sure you want to delete this item ?</p>
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Cancel
-                                                                </button>
-                                                                <button type="submit"
-                                                                        class="btn btn-danger">Yes Delete it
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-
-
+                                                <button type="type" class="btn btn-danger">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
 
@@ -98,5 +64,12 @@
                     </div>
                 </div>
             </div>
-@endsection
+            @endsection
 
+            <script>
+                import Buttons from "../../../../public/admin/template/pages/ui-features/buttons.html";
+
+                export default {
+                    components: {Buttons}
+                }
+            </script>

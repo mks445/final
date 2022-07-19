@@ -14,7 +14,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <form class="forms-sample"  action="{{route('category.edit', $category->id)}}" method="post" enctype="multipart/form-data">
+                                        <form class="forms-sample"  action="{{route('category.update', $category->id)}}" method="post" enctype="multipart/form-data">
 
 
                                             @csrf

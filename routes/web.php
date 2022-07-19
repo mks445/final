@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,31 +14,43 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//user
+Route::view('/','welcome' )->name('welcome');
+Route::view('/home', 'home');
+Route::view('/test', 'test');
+Route::view('/about', 'about');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-Route::get('/home', function () {
-    return view('home');
-});
+//master
+
+Route::view('/master', 'master.app')->name('master');
+
+Route::view('/auth', 'backend.admin.index')->name('admin');
+
 
 
 //admin
 
 
-Route::get('/auth', function () {
-    return view('backend.admin.index');
-});
+
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function(){
+Route::get('/',[\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
+}) ;
+
+//Route::namespace('')->prefix('auth')->name('admin.')->middleware('can:manage-users')->group(function (){
+//Route::resource('users', 'UsersController', ['except' =>['show', 'crate','store']]);
 
 
+
+//});
 Route::group(['prefix' => 'auth'], function () {
-    Route::resource('/category', 'App\Http\Controllers\CategoryController');
-//    Route::get('/category/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('category.create');
-//    Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
-//    Route::post('/category/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
-//    Route::get('/category/{id}/edit', [App\Http\Controllers\CategoryController::class, 'edit'])->name('category.edit');
-//    Route::put('/category/{id}/update', [App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/users', UsersController::class);
+
+
+
 });
+
+
 
 
 Auth::routes();
@@ -50,6 +63,9 @@ Route::get('/register/user', function () {
 Route::get('/register/master', function () {
     return view('master.register');
 })->name('register.master');
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

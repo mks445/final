@@ -27,19 +27,21 @@
                     <table class="table">
                         <thead>
                         <tr>
-
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Category</th>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Category</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($jobs as $job)
-                        <tr>
-                            <td>{{$job->name}}</td>
-                            <td>{{$job->description}}</td>
-                            <td>{{$job->category->name}}</td>
-                        </tr>
+                            <tr>
+                                <td><img src="{{Storage::url($job->category->image)}}" alt="" width="50" height="50">
+                                </td>
+                                <td>{{$job->name}}</td>
+                                <td>{{$job->description}}</td>
+                                <td>{{$job->category->name}}</td>
+                            </tr>
                         @endforeach
 
                         </tbody>

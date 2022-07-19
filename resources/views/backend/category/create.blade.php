@@ -4,15 +4,12 @@
     <div class="main-panel">
         <div class="content-wrapper">
 
-            <div class="row">
-                <div class="col-md-12 grid-margin">
-                    <div class="d-flex justify-content-between flex-wrap">
-                        <h3>Add Category</h3>
-                        <div class="row justify-content-center">
-                            <div class="col-md-10">
-
-                                <div class="card">
-                                    <div class="card-body">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card mt-5">
+                            <div class="card-header">Create a new Category</div>
+                            <div class="card-body">
 
                                         <form class="forms-sample" method="POST" action="{{route('category.store')}}"  enctype="multipart/form-data">
                                             @csrf
@@ -59,4 +56,7 @@
             </div>
         </div>
     </div>
+
+
+
 @endsection

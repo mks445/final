@@ -1,124 +1,131 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
 
-    <title>Master 5</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-    </script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Mr Handyman</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{asset('home_page/assets/favicon.ico')}}"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{asset('home_page/css/styles.css')}}" rel="stylesheet"/>
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{('/')}}">Master 5</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                        @endif
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark navbar bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{{route('welcome')}}">
+            <img src="/MasterFive/public/home_page/assets/logo.jpg" alt="logo"
+                 class="logo-image">
+        </a>
 
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register.user') }}">{{ __('Register user') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register.master') }}">{{ __('Register master') }}</a>
-                            </li>
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
+    <div class="navbar">
+        <a href="{{route('welcome')}}">
+            <button class="btn1">For Customers</button>
+        </a>
+        <a href="{{route('master')}}">
+            <button class="btn2">For Profesionals</button>
+        </a>
+    </div>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-                <ul class="navbar-nav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="{{route('welcome')}}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('admin')}}">Admin</a></li>
+
+
+            @guest
+                @if (Route::has('login'))
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('jobs.index')}}">Job list</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
+                @endif
 
-                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('jobs.create')}}">New job</a>
-                        </li>
-                    @endauth
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register.user') }}">{{ __('Register user') }}</a>
+                </li>
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+
+
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('jobs.index')}}">Job list</a>
+            </li>
+
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('jobs.create')}}">New job</a>
+                </li>
+            @endauth
+
+        </ul>
+    </div>
+
+
+</nav>
+
 
 @yield('content')
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Mr Handyman 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- Core theme JS-->
+<script src="{{asset('home_page/js/scripts.js')}}"></script>
 </body>
-
-<style>
-
-    .dropdown:hover>.dropdown-menu {
-        display: block;
-    }
-
-    /* hover dropdown menus */
-    @media only screen and (max-width: 991px) {
-        .navbar-hover .show > .dropdown-toggle::after{
-            transform: rotate(-90deg);
-        }
-    }
-    @media only screen and (min-width: 492px) {
-
-        .navbar-hover .collapse ul li{position:relative;}
-        .navbar-hover .collapse ul li:hover> ul{display:block}
-        .navbar-hover .collapse ul ul{position:absolute;top:100%;left:0;min-width:250px;display:none}
-        .navbar-hover .collapse ul ul ul{position:absolute;top:0;left:100%;min-width:250px;display:none}}
-
-</style>
-
 </html>
+
+
+
+
+
+
+
